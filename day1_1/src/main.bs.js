@@ -62,8 +62,6 @@ console.log("Input length: " + Pervasives.string_of_int(contents.length));
 
 var list_of_ints = string_to_int_list(contents);
 
-List.map(print_int, list_of_ints);
-
 console.log("Output: " + Pervasives.string_of_int(sum_consecutive(list_of_ints)));
 
 exports.string_to_int_list = string_to_int_list;

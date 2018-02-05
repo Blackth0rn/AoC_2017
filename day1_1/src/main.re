@@ -25,6 +25,7 @@ let sum_consecutive = (lst) => {
 	adder(lst)
 };
 
+
 let filename = "input.txt";
 
 let contents = readFileSync(filename, `utf8);
@@ -34,7 +35,5 @@ Js.log("Input: " ++ contents);
 Js.log("Input length: " ++ string_of_int(String.length(contents)));
 
 let list_of_ints = string_to_int_list(contents);
-
-List.map( print_int, list_of_ints);
 
 Js.log("Output: " ++ string_of_int(sum_consecutive(list_of_ints)));
