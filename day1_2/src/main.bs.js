@@ -5,7 +5,7 @@ var $$Array        = require("bs-platform/lib/js/array.js");
 var $$String       = require("bs-platform/lib/js/string.js");
 var Caml_array     = require("bs-platform/lib/js/caml_array.js");
 var Caml_format    = require("bs-platform/lib/js/caml_format.js");
-var Readline$Day11 = require("./readline.bs.js");
+var Readline$Day11 = require("../../util/readline.bs.js");
 
 var arrayOfInts = /* array */[];
 
