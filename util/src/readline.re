@@ -14,11 +14,18 @@ type readline_options = {.
 [@bs.module "readline"] external createInterface:
 	readline_options => readline_interface = "createInterface";
 
-[@bs.send] external on :
-	(readline_interface => [ |
-		`line ((string => unit)) |
-		`close((unit => unit))
-	]) => unit = "";
+[@bs.send.pipe: readline_interface] external on :
+	(
+		[@bs.string] [
+			| `line  (string => unit)
+			| `close (unit => unit)
+		]
+	) => readline_interface = "";
+
+[@bs.send] external close:
+	(
+		readline_interface
+	) => unit = "";
 
 [@bs.send] external question:
 	(
@@ -42,7 +49,7 @@ type readline_options = {.
 	{.
 		"stdin": readable_stream,
 		"stdout": writable_stream,
-		"exit": int
+		"exit": [@bs.meth] int => unit
 	} = "global.process";
 
 let rl = createInterface(
@@ -55,4 +62,5 @@ let rl = createInterface(
 
 let question = question(rl);
 let setPrompt = setPrompt(rl);
-let prompt = () => { prompt(rl) };
+let prompt = () => prompt(rl);
+let close = () => close(rl);
