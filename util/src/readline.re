@@ -27,6 +27,17 @@ type readline_options = {.
 		(string) => unit
 	) => unit = "";
 
+[@bs.send] external setPrompt:
+	(
+		readline_interface,
+		string
+	) => unit = "";
+
+[@bs.send] external prompt:
+	(
+		readline_interface
+	) => unit = "";
+
 [@bs.val] external process:
 	{.
 		"stdin": readable_stream,
@@ -43,3 +54,5 @@ let rl = createInterface(
 );
 
 let question = question(rl);
+let setPrompt = setPrompt(rl);
+let prompt = () => { prompt(rl) };
